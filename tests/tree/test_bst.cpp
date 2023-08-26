@@ -58,3 +58,38 @@ TEST(TestGetSortedKeys, EmptyTree)
     std::vector<int> keys {tree.sortedKeys()};
     ASSERT_TRUE(keys.empty());
 }
+
+
+TEST(TestBinarySearchTree, InsetingKeys)
+{
+    itp::BST<float> tree;
+    tree.push(20.);
+    tree.push(25.5);
+    tree.push(12.75);
+
+    ASSERT_EQ(tree.length(), 3);
+    ASSERT_TRUE(tree.search(20.));
+    ASSERT_TRUE(tree.search(25.5));
+    ASSERT_TRUE(tree.search(12.75));
+}
+
+
+TEST(TestLevelOrderTraversal, SmallTree)
+{
+    itp::BST<float> tree;
+    tree.push(20.);
+    tree.push(25.5);
+    tree.push(12.75);
+
+    std::vector<float> keys {tree.levelOrder()};
+    std::vector<float> expected {20., 25.5, 12.75};
+    ASSERT_EQ(keys, expected);
+}
+
+TEST(TestLevelOrderTraversal, LargerTree)
+{
+    itp::BST<int> tree{43, 23, 47, 37, 53, 29, 41, 31};
+    std::vector<int> keys {tree.levelOrder()};
+    std::vector<int> expected {43, 23, 47, 37, 53, 29, 41, 31};
+    ASSERT_EQ(keys, expected);
+}
