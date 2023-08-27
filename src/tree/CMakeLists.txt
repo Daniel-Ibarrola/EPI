@@ -2,8 +2,10 @@ add_library(tree "")
 
 target_sources(tree
         PRIVATE
+        binary_tree.cpp
         bst.cpp
         PUBLIC
+        ${CMAKE_CURRENT_LIST_DIR}/binary_tree.h
         ${CMAKE_CURRENT_LIST_DIR}/bst.h
 )
 

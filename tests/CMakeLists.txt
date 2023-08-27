@@ -7,6 +7,7 @@ add_executable(
         linkedlist/test_linkedlist.cpp
         stack/test_stack_max.cpp
         tree/test_bst.cpp
+        tree/test_binary_tree.cpp
 )
 
 target_link_libraries(Google_Tests_run linkedlist)

@@ -1,5 +1,6 @@
 add_executable(InterviewPrep main.cpp)
 
+add_subdirectory(heap)
 add_subdirectory(linkedlist)
 add_subdirectory(stack)
 add_subdirectory(tree)
