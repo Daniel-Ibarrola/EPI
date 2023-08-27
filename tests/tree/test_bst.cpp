@@ -74,6 +74,13 @@ TEST(TestBinarySearchTree, InsetingKeys)
 }
 
 
+TEST(TestBinarySearchTree, SearchForKeyNotPresent)
+{
+    itp::BST<int> tree {5, 7, 2};
+    ASSERT_FALSE(tree.search(8));
+}
+
+
 TEST(TestLevelOrderTraversal, SmallTree)
 {
     itp::BST<float> tree;
