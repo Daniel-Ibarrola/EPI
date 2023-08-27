@@ -89,7 +89,7 @@ TEST(TestLevelOrderTraversal, SmallTree)
     tree.push(12.75);
 
     std::vector<float> keys {tree.levelOrder()};
-    std::vector<float> expected {20., 25.5, 12.75};
+    std::vector<float> expected {20., 12.75, 25.5};
     ASSERT_EQ(keys, expected);
 }
 

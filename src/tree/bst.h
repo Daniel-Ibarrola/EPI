@@ -6,6 +6,7 @@
 #define INTERVIEWPREP_BST_H
 
 #include <initializer_list>
+#include <queue>
 #include <stack>
 #include <vector>
 
@@ -91,7 +92,27 @@ namespace itp {
         }
 
         std::vector<data_type> levelOrder() const {
-            return {};
+            if (empty())
+                return {};
+
+            std::vector<data_type> keys;
+            std::queue<TreeNode<data_type>*> queue;
+            queue.push(m_root);
+
+            while (!queue.empty()){
+                TreeNode<data_type>* current {queue.front()};
+                queue.pop();
+
+                keys.push_back(current->key);
+
+                if (current->left != nullptr)
+                    queue.push(current->left);
+
+                if (current->right != nullptr)
+                    queue.push(current->right);
+
+            }
+            return keys;
         }
 
         void push(data_type key){
