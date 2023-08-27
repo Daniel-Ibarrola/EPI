@@ -72,38 +72,21 @@ namespace itp {
         }
 
         std::vector<data_type> sortedKeys() const {
-            if (empty())
-                return {};
-
             std::vector<data_type> keys;
-            std::vector<bool> visited(m_length);
             std::stack<TreeNode<data_type>*> nodes;
-            nodes.push(m_root);
+            TreeNode<data_type>* current {m_root};
 
-            while (!nodes.empty()) {
-                TreeNode<data_type>* current {nodes.top()};
-                nodes.pop();
-
-                if (visited[current->id]){
-                    keys.push_back(current->key);
-                    continue;
-                }
-
-                if (current->left == nullptr)
-                    keys.push_back(current->key);
-
-                if (current->right != nullptr && !visited[current->right->id])
-                    nodes.push(current->right);
-
-                if (current->left != nullptr)
+            while (!nodes.empty() || current) {
+                if (current){
                     nodes.push(current);
-
-                if (current->left != nullptr && !visited[current->left->id])
-                    nodes.push(current->left);
-
-                visited[current->id] = true;
+                    current = current->left;
+                } else {
+                    current = nodes.top();
+                    nodes.pop();
+                    keys.push_back(current->key);
+                    current = current->right;
+                }
             }
-
             return keys;
         }
 
