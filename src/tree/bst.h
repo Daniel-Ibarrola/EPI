@@ -6,32 +6,16 @@
 #define INTERVIEWPREP_BST_H
 
 #include <initializer_list>
-#include <queue>
 #include <stack>
 #include <vector>
+#include "binary_tree.h"
+#include "node.h"
 
 namespace itp {
 
     template <typename data_type>
-    struct TreeNode {
-        data_type key;
-        TreeNode<data_type>* left;
-        TreeNode<data_type>* right;
-        std::size_t id;
-
-        explicit TreeNode(data_type key_, std::size_t id_)
-            : key {key_}, id {id_}, left {nullptr}, right {nullptr}
-        {
-
-        }
-
-    };
-
-    template <typename data_type>
-    class BST {
+    class BST : public AbstractBinaryTree<data_type> {
         // Binary Search tree class
-        TreeNode<data_type>* m_root {nullptr};
-        std::size_t m_length {0};
 
         void insertKey(TreeNode<data_type>* root,
                        data_type key,
@@ -75,7 +59,7 @@ namespace itp {
         std::vector<data_type> sortedKeys() const {
             std::vector<data_type> keys;
             std::stack<TreeNode<data_type>*> nodes;
-            TreeNode<data_type>* current {m_root};
+            TreeNode<data_type>* current {this->m_root};
 
             while (!nodes.empty() || current) {
                 if (current){
@@ -91,47 +75,19 @@ namespace itp {
             return keys;
         }
 
-        std::vector<data_type> levelOrder() const {
-            if (empty())
-                return {};
-
-            std::vector<data_type> keys;
-            std::queue<TreeNode<data_type>*> queue;
-            queue.push(m_root);
-
-            while (!queue.empty()){
-                TreeNode<data_type>* current {queue.front()};
-                queue.pop();
-
-                keys.push_back(current->key);
-
-                if (current->left != nullptr)
-                    queue.push(current->left);
-
-                if (current->right != nullptr)
-                    queue.push(current->right);
-
-            }
-            return keys;
-        }
-
-        void push(data_type key){
-            if (m_root == nullptr)
-                m_root = new TreeNode<data_type> {key, m_length};
+        void push(data_type key) override {
+            if (this->m_root == nullptr)
+                this->m_root = new TreeNode<data_type> {key, this->m_length};
             else
-                insertKey(m_root, key, m_length);
-            ++m_length;
+                insertKey(this->m_root, key, this->m_length);
+            ++this->m_length;
         }
 
-        [[nodiscard]] std::size_t length() const { return m_length; }
-
-        bool search(data_type key) const {
+        bool search(data_type key) const override {
             // Search for a specific key in the tree. Returns true if
             // the key is present, false otherwise
-            return recursiveSearch(m_root, key);
+            return recursiveSearch(this->m_root, key);
         }
-
-        [[nodiscard]] bool empty() const {return m_length == 0;}
     };
 }
 
