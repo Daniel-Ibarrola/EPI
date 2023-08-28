@@ -155,3 +155,24 @@ TEST(TestPostOrderTraversal, LargerTree)
     std::vector<int> expected {10, 30, 25, 60, 90, 75, 50};
     ASSERT_EQ(keys, expected);
 }
+
+
+TEST(TestTreeHeight, SmallTree)
+{
+    itp::BST<int> tree{4, 3, 5};
+    ASSERT_EQ(tree.height(), 1);
+}
+
+
+TEST(TestTreeHeight, LargerTree)
+{
+    itp::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
+    ASSERT_EQ(tree.height(), 2);
+}
+
+
+TEST(TestTreeHeight, EmptyTree)
+{
+    itp::BST<int> tree;
+    ASSERT_EQ(tree.height(), 0);
+}

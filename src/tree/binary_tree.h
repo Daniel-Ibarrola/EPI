@@ -69,6 +69,17 @@ namespace itp {
             return keys;
         }
 
+        [[nodiscard]] bool isBalanced() const {
+            return false;
+        }
+
+        [[nodiscard]] unsigned int height() const {
+            // Compute the height of the tree
+            if (empty())
+                return 0;
+            return heightHelper(m_root) - 1;
+        }
+
     private:
 
         void inOrderHelper(TreeNode<data_type>* node,
@@ -101,13 +112,67 @@ namespace itp {
             keys.push_back(node->key);
         }
 
+        unsigned int heightHelper(TreeNode<data_type>* root) const {
+            if (root == nullptr)
+                return 0;
+            unsigned int leftTreeHeight {heightHelper(root->left)};
+            unsigned int rightTreeHeight {heightHelper(root->right)};
+            return std::max(leftTreeHeight, rightTreeHeight) + 1;
+        }
+
+    };
+
+    enum class Child {
+        LEFT,
+        RIGHT
     };
 
     template<typename data_type>
     class BinaryTree : public AbstractBinaryTree<data_type> {
         // A binary tree
 
+    public:
 
+        BinaryTree() = default;
+
+        BinaryTree(std::initializer_list<data_type> treeData){
+            for (auto data: treeData){
+                push(data);
+            }
+        }
+
+        void push(data_type key) override {
+            // Push a new key to the tree, keeping the tree balanced
+        }
+
+        TreeNode<data_type>* push(TreeNode<data_type>* root,
+                                  data_type key,
+                                  Child child
+                ){
+            // Push a new tree to the node manually
+            auto* newNode = new TreeNode<data_type> {key, this->m_length};
+            if (child == Child::LEFT)
+                root->left = newNode;
+            else
+                root->right = newNode;
+            ++this->m_length;
+            return newNode;
+        }
+
+        bool search(data_type key) const override {
+            // Search a tree in the key in O(numNodes) time
+            return false;
+        }
+
+        TreeNode<data_type>* getRoot() { return this->m_root; }
+
+        void setRootKey(data_type key) {
+            // Set the key of the root node
+            if (this->m_root == nullptr)
+                this->m_root = new TreeNode<data_type> {key, 0};
+            else
+                this->m_root->key = key;
+        }
     };
 }
 

@@ -76,6 +76,8 @@ namespace itp {
         }
 
         void push(data_type key) override {
+            // Push a new key to the tree. Guarantees that the binary
+            // search tree property is always maintained
             if (this->m_root == nullptr)
                 this->m_root = new TreeNode<data_type> {key, this->m_length};
             else
