@@ -103,55 +103,55 @@ TEST(TestLevelOrderTraversal, LargerTree)
 }
 
 
-//TEST(TestInOrderTraversal, SmallTree)
-//{
-//    itp::BST<int> tree {1, 2, 3};
-//    std::vector keys {tree.inOrder()};
-//    std::vector expected {2, 1, 3};
-//    ASSERT_EQ(keys, expected);
-//}
-//
-//
-//TEST(TestInorderTraversal, LargerTree)
-//{
-//    itp::BST<int> tree {1, 2, 3, 4, 5, 6, 7};
-//    std::vector keys {tree.inOrder()};
-//    std::vector expected {4, 2, 5, 1, 6, 3, 7};
-//    ASSERT_EQ(keys, expected);
-//}
-//
-//
-//TEST(TestPreorderTraversal, SmallTree)
-//{
-//    itp::BST<int> tree {1, 2, 3};
-//    std::vector keys {tree.preOrder()};
-//    std::vector expected {1, 2, 3};
-//    ASSERT_EQ(keys, expected);
-//}
-//
-//
-//TEST(TestPreorderTraversal, LargerTree)
-//{
-//    itp::BST<int> tree {1, 2, 3, 4, 5, 6, 7};
-//    std::vector keys {tree.preOrder()};
-//    std::vector expected {1, 2, 4, 5, 3, 6, 7};
-//    ASSERT_EQ(keys, expected);
-//}
-//
-//
-//TEST(TestPostOrderTraversal, SmallTree)
-//{
-//    itp::BST<int> tree {1, 2, 3};
-//    std::vector keys {tree.postOrder()};
-//    std::vector expected {1, 2, 3};
-//    ASSERT_EQ(keys, expected);
-//}
-//
-//
-//TEST(TestPostOrderTraversal, LargerTree)
-//{
-//    itp::BST<int> tree {1, 2, 3, 4, 5, 6, 7};
-//    std::vector keys {tree.postOrder()};
-//    std::vector expected {4, 5, 2, 6, 7, 3, 1};
-//    ASSERT_EQ(keys, expected);
-//}
+TEST(TestInOrderTraversal, SmallTree)
+{
+    itp::BST<int> tree {10, 5, 15};
+    std::vector<int> keys {tree.inOrder()};
+    std::vector<int> expected {5, 10, 15};
+    ASSERT_EQ(keys, expected);
+}
+
+
+TEST(TestInOrderTraversal, LargerTree)
+{
+    itp::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
+    std::vector<int> keys {tree.inOrder()};
+    std::vector<int> expected {10, 25, 30, 50, 60, 75, 90};
+    ASSERT_EQ(keys, expected);
+}
+
+
+TEST(TestPreorderTraversal, SmallTree)
+{
+    itp::BST<int> tree {10, 5, 15};
+    std::vector<int> keys {tree.preOrder()};
+    std::vector<int> expected {10, 5, 15};
+    ASSERT_EQ(keys, expected);
+}
+
+
+TEST(TestPreorderTraversal, LargerTree)
+{
+    itp::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
+    std::vector<int> keys {tree.preOrder()};
+    std::vector<int> expected {50, 25, 10, 30, 75, 60, 90};
+    ASSERT_EQ(keys, expected);
+}
+
+
+TEST(TestPostOrderTraversal, SmallTree)
+{
+    itp::BST<int> tree {10, 5, 15};
+    std::vector<int> keys {tree.postOrder()};
+    std::vector<int> expected {5, 15, 10};
+    ASSERT_EQ(keys, expected);
+}
+
+
+TEST(TestPostOrderTraversal, LargerTree)
+{
+    itp::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
+    std::vector<int> keys {tree.postOrder()};
+    std::vector<int> expected {10, 30, 25, 60, 90, 75, 50};
+    ASSERT_EQ(keys, expected);
+}
