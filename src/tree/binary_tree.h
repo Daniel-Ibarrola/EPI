@@ -5,6 +5,7 @@
 #ifndef INTERVIEWPREP_BINARY_TREE_H
 #define INTERVIEWPREP_BINARY_TREE_H
 
+#include <cmath>
 #include <queue>
 #include <vector>
 #include "node.h"
@@ -16,6 +17,8 @@ namespace itp {
     protected:
         TreeNode<data_type>* m_root {nullptr};
         std::size_t m_length {0};
+
+        const int UNBALANCED {-2};
 
     public:
         virtual void push(data_type key) = 0;
@@ -70,7 +73,7 @@ namespace itp {
         }
 
         [[nodiscard]] bool isBalanced() const {
-            return false;
+            return isBalancedHelper(m_root) != UNBALANCED;
         }
 
         [[nodiscard]] unsigned int height() const {
@@ -118,6 +121,24 @@ namespace itp {
             unsigned int leftTreeHeight {heightHelper(root->left)};
             unsigned int rightTreeHeight {heightHelper(root->right)};
             return std::max(leftTreeHeight, rightTreeHeight) + 1;
+        }
+
+        int isBalancedHelper(TreeNode<data_type>* root) const {
+            if (root == nullptr)
+                return 0;
+
+            int leftTreeH {isBalancedHelper(root->left)};
+            if (leftTreeH == UNBALANCED)
+                return UNBALANCED;
+
+            int rightTreeH {isBalancedHelper(root->right)};
+            if (rightTreeH == UNBALANCED)
+                return UNBALANCED;
+
+            if (abs(leftTreeH - rightTreeH) > 1)
+                return UNBALANCED;
+
+            return std::max(leftTreeH, rightTreeH) + 1;
         }
 
     };

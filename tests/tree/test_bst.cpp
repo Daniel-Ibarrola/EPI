@@ -176,3 +176,38 @@ TEST(TestTreeHeight, EmptyTree)
     itp::BST<int> tree;
     ASSERT_EQ(tree.height(), 0);
 }
+
+
+TEST(TestTreeBalance, UnbalancedTreeSmall)
+{
+    itp::BST<int> tree{50, 25, 20};
+    ASSERT_FALSE(tree.isBalanced());
+}
+
+
+TEST(TestTreeBalance, UnbalancedTreeLarge)
+{
+    itp::BST<int> tree{50, 25, 20, 30, 10, 15, 75};
+    ASSERT_FALSE(tree.isBalanced());
+}
+
+
+TEST(TestTreeBalance, BalancedTreeSmall)
+{
+    itp::BST<int> tree {50, 25, 75, 10};
+    ASSERT_TRUE(tree.isBalanced());
+}
+
+
+TEST(TestTreeBalance, BalancedTreeLarge)
+{
+    itp::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
+    ASSERT_TRUE(tree.isBalanced());
+}
+
+
+TEST(TestTreeBalance, EmptyTree)
+{
+    itp::BST<int> tree;
+    ASSERT_TRUE(tree.isBalanced());
+}
