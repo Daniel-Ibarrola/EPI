@@ -31,9 +31,9 @@ int binarySearch(const std::vector<data_type>& array, data_type element){
 
 template <typename data_type>
 int binarySearchDup(const std::vector<data_type>& array, data_type key){
-    // Binary search that can handle repeated keys. If a key is repeated
-    // returns the index of the first occurrence. Returns -1 if key is not
-    // found
+    /// Binary search that can handle repeated keys. If a key is repeated
+    /// returns the index of the first occurrence. Returns -1 if key is not
+    /// found
     if (array.empty())
         return -1;
 
@@ -44,7 +44,7 @@ int binarySearchDup(const std::vector<data_type>& array, data_type key){
     while (left <= right) {
         int mid {left + (right - left) / 2};
         if (array[mid] == key){
-            firstOccurrence = static_cast<int>(mid);
+            firstOccurrence = mid;
             right = mid - 1;
         }
         else if (array[mid] < key)
@@ -59,7 +59,25 @@ int binarySearchDup(const std::vector<data_type>& array, data_type key){
 
 template <typename data_type>
 int firstLarger(const std::vector<data_type>& array, data_type key){
-    return -1;
+    /// Returns the index of the first key that is larger than the given
+    /// one. If there is no key that is greater, returns - 1
+    if (array.empty())
+        return -1;
+
+    int left {0};
+    int right {array.size() - 1};
+    int larger {-1};
+
+    while (left <= right) {
+        int mid {left + (right - left) / 2};
+        if (array[mid] <= key){
+            left = mid + 1;
+        } else {
+            larger = mid;
+            right = mid - 1;
+        }
+    }
+    return larger;
 }
 
 #endif //INTERVIEWPREP_SEARCH_H
