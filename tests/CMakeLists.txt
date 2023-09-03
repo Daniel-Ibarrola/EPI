@@ -5,6 +5,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 add_executable(
         Google_Tests_run
         hashtable/test_can_form_palindrome.cpp
+        hashtable/test_write_letter.cpp
         linkedlist/test_linkedlist.cpp
         searching/test_binary_search.cpp
         stack/test_stack_max.cpp

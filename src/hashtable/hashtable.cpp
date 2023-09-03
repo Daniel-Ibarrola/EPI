@@ -21,3 +21,40 @@ bool itp::canFormPalindrome(const std::string& str){
     }
     return unevenCount <= 1;
 }
+
+
+bool itp::canWriteLetter(
+        const std::string& magazine,
+        const std::string& letter
+){
+    /// Checks if the letter string can be built from the magazine string
+    std::unordered_map<char, unsigned int> magazineCount;
+    for (auto ch : magazine){
+        unsigned char character{static_cast<unsigned char>(ch)};
+
+        if (std::isalpha(character)){
+            char lower {static_cast<char>(std::tolower(character))};
+
+            if (magazineCount.count(lower) == 0)
+                magazineCount[lower] = 1;
+            else
+                ++magazineCount[lower];
+        }
+    }
+
+    for (auto ch: letter){
+        unsigned char character{static_cast<unsigned char>(ch)};
+
+        if (std::isalpha(character)){
+            char lower {static_cast<char>(std::tolower(character))};
+
+            if (magazineCount.count(lower) == 0 ||
+                magazineCount[lower] == 0
+            )
+                return false;
+
+            --magazineCount[lower];
+        }
+    }
+    return true;
+}
