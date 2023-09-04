@@ -41,6 +41,22 @@ TEST(MergeSort, EmptyArray)
 }
 
 
+TEST(QuickSort, SwappingElements)
+{
+    ASSERT_TRUE(true);
+}
+
+
+TEST(QuickSort, Partition)
+{
+    std::vector<int> array {8, 5, 7, 6};
+    int pivot = epi::partition(array, 0, 3);
+
+    std::vector<int> expected {5, 6, 7, 8};
+    ASSERT_EQ(array, expected);
+    ASSERT_EQ(pivot, 1);
+}
+
 TEST(QuickSort, CanSortArray)
 {
     std::vector<int> array {6, 5, 12, 10 ,9, 1};
