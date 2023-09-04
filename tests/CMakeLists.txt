@@ -8,6 +8,7 @@ add_executable(
         hashtable/test_write_letter.cpp
         linkedlist/test_linkedlist.cpp
         searching/test_binary_search.cpp
+        sorting/test_sort.cpp
         stack/test_stack_max.cpp
         tree/test_bst.cpp
         tree/test_binary_tree.cpp
@@ -16,6 +17,7 @@ add_executable(
 target_link_libraries(Google_Tests_run hashtable)
 target_link_libraries(Google_Tests_run linkedlist)
 target_link_libraries(Google_Tests_run searching)
+target_link_libraries(Google_Tests_run sorting)
 target_link_libraries(Google_Tests_run stack)
 target_link_libraries(Google_Tests_run tree)
 target_link_libraries(Google_Tests_run gtest gtest_main)

@@ -4,6 +4,7 @@ add_subdirectory(hashtable)
 add_subdirectory(heap)
 add_subdirectory(linkedlist)
 add_subdirectory(searching)
+add_subdirectory(sorting)
 add_subdirectory(stack)
 add_subdirectory(tree)
 
