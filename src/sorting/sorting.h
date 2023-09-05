@@ -118,40 +118,17 @@ namespace epi {
         std::size_t ii {0};
         std::size_t jj {0};
 
-        while (ii < arr1.size() || jj < arr2.size()){
+        while (ii < arr1.size() && jj < arr2.size()){
             if (arr1[ii] < arr2[jj]){
                 ++ii;
             } else if (arr1[ii] == arr2[jj] &&
-                (result.empty() || result[result.size() - 1] != arr1[ii])
+                (ii == 0 || arr1[ii] != arr1[ii - 1])
                 ){
                 result.push_back(arr1[ii]);
                 ++ii;
                 ++jj;
             } else {
                 ++jj;
-            }
-        }
-
-        // Find if there is a remaining intersecting element
-        auto last {arr2[arr2.size() - 1]};
-        for (auto kk {ii}; kk < arr1.size(); ++kk){
-            if (arr1[kk] > last){
-                break;
-            }
-            else if (arr1[kk] == last){
-                result.push_back(last);
-                break;
-            }
-        }
-
-        last = arr1[arr1.size() - 1];
-        for (auto kk {jj}; kk < arr2.size(); ++kk){
-            if (arr2[kk] > last){
-                break;
-            }
-            else if (arr2[kk] == last){
-                result.push_back(last);
-                break;
             }
         }
 
