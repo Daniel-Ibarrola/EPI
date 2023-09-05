@@ -29,3 +29,8 @@ The following algorithms have been implemented so far.
 
 - [12.1 Test for palindromic permutations](src/hashtable/hashtable.cpp)
 - [12.2 Is anonymous letter constructible?](src/hashtable/hashtable.cpp)
+
+### Chapter 13. Sorting
+- [Merge sort](src/sorting/sorting.h)
+- [Quick sort](src/sorting/sorting.h)
+- [13.1 Compute the intersection of sorted arrays](src/sorting/sorting.h)

@@ -9,6 +9,7 @@ add_executable(
         linkedlist/test_linkedlist.cpp
         searching/test_binary_search.cpp
         sorting/test_sort.cpp
+        sorting/test_intersection.cpp
         stack/test_stack_max.cpp
         tree/test_bst.cpp
         tree/test_binary_tree.cpp

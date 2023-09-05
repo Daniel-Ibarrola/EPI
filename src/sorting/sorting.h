@@ -107,6 +107,57 @@ namespace epi {
         quickSortHelper(array, 0,  array.size() - 1);
     }
 
+    template<typename data_type>
+    std::vector<data_type> intersection(
+            const std::vector<data_type>& arr1, const std::vector<data_type>& arr2){
+        // Returns the intersection of two sorted arrays
+        if (arr1.empty() || arr2.empty())
+            return {};
+
+        std::vector<data_type> result;
+        std::size_t ii {0};
+        std::size_t jj {0};
+
+        while (ii < arr1.size() || jj < arr2.size()){
+            if (arr1[ii] < arr2[jj]){
+                ++ii;
+            } else if (arr1[ii] == arr2[jj] &&
+                (result.empty() || result[result.size() - 1] != arr1[ii])
+                ){
+                result.push_back(arr1[ii]);
+                ++ii;
+                ++jj;
+            } else {
+                ++jj;
+            }
+        }
+
+        // Find if there is a remaining intersecting element
+        auto last {arr2[arr2.size() - 1]};
+        for (auto kk {ii}; kk < arr1.size(); ++kk){
+            if (arr1[kk] > last){
+                break;
+            }
+            else if (arr1[kk] == last){
+                result.push_back(last);
+                break;
+            }
+        }
+
+        last = arr1[arr1.size() - 1];
+        for (auto kk {jj}; kk < arr2.size(); ++kk){
+            if (arr2[kk] > last){
+                break;
+            }
+            else if (arr2[kk] == last){
+                result.push_back(last);
+                break;
+            }
+        }
+
+        return result;
+    }
+
 }
 
 #endif //INTERVIEWPREP_SORTING_H
