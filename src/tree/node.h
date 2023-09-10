@@ -7,7 +7,7 @@
 
 #include <cstddef>
 
-namespace itp {
+namespace epi {
 
     template <typename data_type>
     struct TreeNode {

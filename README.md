@@ -34,3 +34,6 @@ The following algorithms have been implemented so far.
 - [Merge sort](src/sorting/sorting.h)
 - [Quick sort](src/sorting/sorting.h)
 - [13.1 Compute the intersection of sorted arrays](src/sorting/sorting.h)
+
+### Chapter 14. Binary Search Trees
+- [14.1 Test if tree satisfies BST property](src/tree/binary_tree.h)

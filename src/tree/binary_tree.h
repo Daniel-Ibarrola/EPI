@@ -10,7 +10,7 @@
 #include <vector>
 #include "node.h"
 
-namespace itp {
+namespace epi {
 
     template<typename data_type>
     class AbstractBinaryTree {
@@ -83,6 +83,10 @@ namespace itp {
             return heightHelper(m_root) - 1;
         }
 
+        [[nodiscard]] bool isBST() const {
+            return false;
+        }
+
     private:
 
         void inOrderHelper(TreeNode<data_type>* node,
@@ -140,8 +144,10 @@ namespace itp {
 
             return std::max(leftTreeH, rightTreeH) + 1;
         }
-
     };
+
+    template <>
+    bool AbstractBinaryTree<int>::isBST() const;
 
     enum class Child {
         LEFT,

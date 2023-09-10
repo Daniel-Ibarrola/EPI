@@ -12,7 +12,7 @@ TEST(TestGetSortedKeys, SmallTree)
     //      4
     //     /  \
     //    3    5
-    itp::BST<int> tree{4, 3, 5};
+    epi::BST<int> tree{4, 3, 5};
     std::vector<int> keys {tree.sortedKeys()};
     std::vector<int> expected {3, 4, 5};
     ASSERT_EQ(keys, expected);
@@ -26,7 +26,7 @@ TEST(TestGetSortedKeys, MediumTree)
     //    30     50
     //     \     /
     //      35  45
-    itp::BST<int> tree{40, 30, 50, 35, 45};
+    epi::BST<int> tree{40, 30, 50, 35, 45};
     std::vector<int> keys {tree.sortedKeys()};
     std::vector<int> expected {30, 35, 40, 45, 50};
     ASSERT_EQ(keys, expected);
@@ -45,7 +45,7 @@ TEST(TestGetSortedKeys, LargerTree)
     //     29   41
     //       \
     //        31
-    itp::BST<int> tree{43, 23, 47, 37, 53, 29, 41, 31};
+    epi::BST<int> tree{43, 23, 47, 37, 53, 29, 41, 31};
     std::vector<int> keys {tree.sortedKeys()};
     std::vector<int> expected {23, 29, 31, 37, 41, 43, 47, 53};
     ASSERT_EQ(keys, expected);
@@ -54,7 +54,7 @@ TEST(TestGetSortedKeys, LargerTree)
 
 TEST(TestGetSortedKeys, EmptyTree)
 {
-    itp::BST<int> tree;
+    epi::BST<int> tree;
     std::vector<int> keys {tree.sortedKeys()};
     ASSERT_TRUE(keys.empty());
 }
@@ -62,7 +62,7 @@ TEST(TestGetSortedKeys, EmptyTree)
 
 TEST(TestBinarySearchTree, InsertingKeys)
 {
-    itp::BST<float> tree;
+    epi::BST<float> tree;
     tree.push(20.);
     tree.push(25.5);
     tree.push(12.75);
@@ -76,14 +76,14 @@ TEST(TestBinarySearchTree, InsertingKeys)
 
 TEST(TestBinarySearchTree, SearchForKeyNotPresent)
 {
-    itp::BST<int> tree {5, 7, 2};
+    epi::BST<int> tree {5, 7, 2};
     ASSERT_FALSE(tree.search(8));
 }
 
 
 TEST(TestLevelOrderTraversal, SmallTree)
 {
-    itp::BST<float> tree;
+    epi::BST<float> tree;
     tree.push(20.);
     tree.push(25.5);
     tree.push(12.75);
@@ -96,7 +96,7 @@ TEST(TestLevelOrderTraversal, SmallTree)
 
 TEST(TestLevelOrderTraversal, LargerTree)
 {
-    itp::BST<int> tree{43, 23, 47, 37, 53, 29, 41, 31};
+    epi::BST<int> tree{43, 23, 47, 37, 53, 29, 41, 31};
     std::vector<int> keys {tree.levelOrder()};
     std::vector<int> expected {43, 23, 47, 37, 53, 29, 41, 31};
     ASSERT_EQ(keys, expected);
@@ -105,7 +105,7 @@ TEST(TestLevelOrderTraversal, LargerTree)
 
 TEST(TestInOrderTraversal, SmallTree)
 {
-    itp::BST<int> tree {10, 5, 15};
+    epi::BST<int> tree {10, 5, 15};
     std::vector<int> keys {tree.inOrder()};
     std::vector<int> expected {5, 10, 15};
     ASSERT_EQ(keys, expected);
@@ -114,7 +114,7 @@ TEST(TestInOrderTraversal, SmallTree)
 
 TEST(TestInOrderTraversal, LargerTree)
 {
-    itp::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
+    epi::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
     std::vector<int> keys {tree.inOrder()};
     std::vector<int> expected {10, 25, 30, 50, 60, 75, 90};
     ASSERT_EQ(keys, expected);
@@ -123,7 +123,7 @@ TEST(TestInOrderTraversal, LargerTree)
 
 TEST(TestPreorderTraversal, SmallTree)
 {
-    itp::BST<int> tree {10, 5, 15};
+    epi::BST<int> tree {10, 5, 15};
     std::vector<int> keys {tree.preOrder()};
     std::vector<int> expected {10, 5, 15};
     ASSERT_EQ(keys, expected);
@@ -132,7 +132,7 @@ TEST(TestPreorderTraversal, SmallTree)
 
 TEST(TestPreorderTraversal, LargerTree)
 {
-    itp::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
+    epi::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
     std::vector<int> keys {tree.preOrder()};
     std::vector<int> expected {50, 25, 10, 30, 75, 60, 90};
     ASSERT_EQ(keys, expected);
@@ -141,7 +141,7 @@ TEST(TestPreorderTraversal, LargerTree)
 
 TEST(TestPostOrderTraversal, SmallTree)
 {
-    itp::BST<int> tree {10, 5, 15};
+    epi::BST<int> tree {10, 5, 15};
     std::vector<int> keys {tree.postOrder()};
     std::vector<int> expected {5, 15, 10};
     ASSERT_EQ(keys, expected);
@@ -150,7 +150,7 @@ TEST(TestPostOrderTraversal, SmallTree)
 
 TEST(TestPostOrderTraversal, LargerTree)
 {
-    itp::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
+    epi::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
     std::vector<int> keys {tree.postOrder()};
     std::vector<int> expected {10, 30, 25, 60, 90, 75, 50};
     ASSERT_EQ(keys, expected);
@@ -159,55 +159,55 @@ TEST(TestPostOrderTraversal, LargerTree)
 
 TEST(TestTreeHeight, SmallTree)
 {
-    itp::BST<int> tree{4, 3, 5};
+    epi::BST<int> tree{4, 3, 5};
     ASSERT_EQ(tree.height(), 1);
 }
 
 
 TEST(TestTreeHeight, LargerTree)
 {
-    itp::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
+    epi::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
     ASSERT_EQ(tree.height(), 2);
 }
 
 
 TEST(TestTreeHeight, EmptyTree)
 {
-    itp::BST<int> tree;
+    epi::BST<int> tree;
     ASSERT_EQ(tree.height(), 0);
 }
 
 
 TEST(TestTreeBalance, UnbalancedTreeSmall)
 {
-    itp::BST<int> tree{50, 25, 20};
+    epi::BST<int> tree{50, 25, 20};
     ASSERT_FALSE(tree.isBalanced());
 }
 
 
 TEST(TestTreeBalance, UnbalancedTreeLarge)
 {
-    itp::BST<int> tree{50, 25, 20, 30, 10, 15, 75};
+    epi::BST<int> tree{50, 25, 20, 30, 10, 15, 75};
     ASSERT_FALSE(tree.isBalanced());
 }
 
 
 TEST(TestTreeBalance, BalancedTreeSmall)
 {
-    itp::BST<int> tree {50, 25, 75, 10};
+    epi::BST<int> tree {50, 25, 75, 10};
     ASSERT_TRUE(tree.isBalanced());
 }
 
 
 TEST(TestTreeBalance, BalancedTreeLarge)
 {
-    itp::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
+    epi::BST<int> tree {50, 25, 75, 10, 30, 60, 90};
     ASSERT_TRUE(tree.isBalanced());
 }
 
 
 TEST(TestTreeBalance, EmptyTree)
 {
-    itp::BST<int> tree;
+    epi::BST<int> tree;
     ASSERT_TRUE(tree.isBalanced());
 }

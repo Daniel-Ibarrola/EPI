@@ -12,7 +12,7 @@ add_executable(
         sorting/test_intersection.cpp
         stack/test_stack_max.cpp
         tree/test_bst.cpp
-        tree/test_binary_tree.cpp
+        tree/test_is_bst.cpp
 )
 
 target_link_libraries(Google_Tests_run hashtable)

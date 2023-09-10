@@ -111,9 +111,6 @@ namespace epi {
     std::vector<data_type> intersection(
             const std::vector<data_type>& arr1, const std::vector<data_type>& arr2){
         // Returns the intersection of two sorted arrays
-        if (arr1.empty() || arr2.empty())
-            return {};
-
         std::vector<data_type> result;
         std::size_t ii {0};
         std::size_t jj {0};

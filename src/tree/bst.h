@@ -11,7 +11,7 @@
 #include "binary_tree.h"
 #include "node.h"
 
-namespace itp {
+namespace epi {
 
     template <typename data_type>
     class BST : public AbstractBinaryTree<data_type> {
