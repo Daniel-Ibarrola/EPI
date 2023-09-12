@@ -1,5 +1,6 @@
 add_executable(InterviewPrep main.cpp)
 
+add_subdirectory(greedy)
 add_subdirectory(hashtable)
 add_subdirectory(heap)
 add_subdirectory(linkedlist)
@@ -10,6 +11,7 @@ add_subdirectory(tree)
 
 target_link_libraries(InterviewPrep
         PUBLIC
+        greedy
         hashtable
         heap
         linkedlist

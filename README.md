@@ -37,3 +37,6 @@ The following algorithms have been implemented so far.
 
 ### Chapter 14. Binary Search Trees
 - [14.1 Test if tree satisfies BST property](src/tree/binary_tree.h)
+
+### Chapter 17. Greedy Algorithms and Invariants
+- [17.1 Compute an optimum assignment of tasks](src/greedy/greedy.cpp)
