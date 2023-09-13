@@ -4,6 +4,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 add_executable(
         Google_Tests_run
+        graph/test_graph.cpp
         greedy/test_greedy.cpp
         hashtable/test_can_form_palindrome.cpp
         hashtable/test_write_letter.cpp
@@ -16,6 +17,7 @@ add_executable(
         tree/test_is_bst.cpp
 )
 
+target_link_libraries(Google_Tests_run graph)
 target_link_libraries(Google_Tests_run greedy)
 target_link_libraries(Google_Tests_run hashtable)
 target_link_libraries(Google_Tests_run linkedlist)

@@ -1,5 +1,6 @@
 add_executable(InterviewPrep main.cpp)
 
+add_subdirectory(graph)
 add_subdirectory(greedy)
 add_subdirectory(hashtable)
 add_subdirectory(heap)
