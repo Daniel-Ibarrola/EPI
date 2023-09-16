@@ -5,6 +5,7 @@
 #ifndef INTERVIEWPREP_GRAPH_H
 #define INTERVIEWPREP_GRAPH_H
 
+#include <queue>
 #include <stdexcept>
 #include <unordered_map>
 #include <unordered_set>
@@ -53,6 +54,7 @@ namespace epi {
 
         [[nodiscard]] std::size_t numNodes() const { return m_nodes.size(); }
         [[nodiscard]] std::size_t numEdges() const { return m_edges; }
+        [[nodiscard]] bool empty() const {return m_nodes.empty(); }
 
         void addNode(data_type key){
             // Adds a new node with given key to the graph. If it already exists
@@ -84,6 +86,37 @@ namespace epi {
             for (auto nodeList : m_nodes){
                 if (visited.find(nodeList.first) == visited.end())
                     dfsHelper(nodeList.first, visited, result);
+            }
+            return result;
+        }
+
+        std::vector<data_type> breadthFirstSearch() {
+            // Returns a vector with the nodes ordered as visited in a breadth first search
+            std::vector<data_type> result;
+            if (empty())
+                return result;
+
+            std::unordered_set<data_type> visited;
+            std::queue<data_type> queue;
+
+            for (auto node : m_nodes){
+                if (visited.find(node.first) == visited.end()){
+                    queue.push(node.first);
+                    visited.insert(node.first);
+                    while (!queue.empty()) {
+                        auto currentNode {queue.front()};
+                        queue.pop();
+
+                        result.emplace_back(currentNode);
+
+                        for (auto nbr : m_nodes[currentNode]){
+                            if (visited.find(nbr) == visited.end()){
+                                visited.insert(nbr);
+                                queue.push(nbr);
+                            }
+                        }
+                    }
+                }
             }
             return result;
         }

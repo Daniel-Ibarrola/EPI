@@ -21,24 +21,53 @@ TEST(UndirectedGraph, AddingNodesAndEdges)
     ASSERT_FALSE(graph.areNeighbors('A', 'C'));
 }
 
-
-TEST(UndirectedGraph, DepthFirstSearch)
-{
+epi::Graph<char> getGraph() {
     std::vector<std::pair<char, char>> edgeList {
+            // Graph with two connected components
             {'A', 'B'}, {'A', 'C'},
             {'B', 'D'}, {'B', 'E'},
             {'D', 'F'}, {'D', 'E'},
             {'E', 'F'}, {'C', 'E'},
             {'G', 'H'}
     };
-    epi::Graph<char> graph(edgeList);
-    std::vector<char> dfs {graph.depthFirstSearch()};
-    std::vector<char> expected {'A', 'B', 'D', 'F', 'E', 'C', 'G', 'H'};
-    ASSERT_EQ(dfs, expected);
+    return epi::Graph<char> (edgeList);
 }
 
 
-//TEST(UndirectedGraph, BreadthFirstSearch)
-//{
-//
-//}
+bool verifyNodesPresent(const std::vector<char>& traversal){
+    // DFS and BFS output is randomized due to the use of unordered_map
+    // and unordered_set. We'll just verify that the nodes are present
+    if (std::count(traversal.begin(), traversal.end(), 'A') != 1)
+        return false;
+    if (std::count(traversal.begin(), traversal.end(), 'B') != 1)
+        return false;
+    if (std::count(traversal.begin(), traversal.end(), 'C') != 1)
+        return false;
+    if (std::count(traversal.begin(), traversal.end(), 'D') != 1)
+        return false;
+    if (std::count(traversal.begin(), traversal.end(), 'E') != 1)
+        return false;
+    if (std::count(traversal.begin(), traversal.end(), 'F') != 1)
+        return false;
+    if (std::count(traversal.begin(), traversal.end(), 'G') != 1)
+        return false;
+    if (std::count(traversal.begin(), traversal.end(), 'H') != 1)
+        return false;
+    return true;
+}
+
+
+TEST(UndirectedGraph, DepthFirstSearch)
+{
+    epi::Graph<char> graph {getGraph()};
+    std::vector<char> dfs {graph.depthFirstSearch()};
+    ASSERT_TRUE(verifyNodesPresent(dfs));
+}
+
+
+TEST(UndirectedGraph, BreadthFirstSearch)
+{
+    epi::Graph<char> graph {getGraph()};
+    std::vector<char> bfs {graph.breadthFirstSearch()};
+    ASSERT_TRUE(verifyNodesPresent(bfs));
+}
