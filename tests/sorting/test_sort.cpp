@@ -41,11 +41,6 @@ TEST(MergeSort, EmptyArray)
 }
 
 
-TEST(QuickSort, SwappingElements)
-{
-    ASSERT_TRUE(true);
-}
-
 
 TEST(QuickSort, Partition)
 {

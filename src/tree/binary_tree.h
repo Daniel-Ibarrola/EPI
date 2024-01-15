@@ -22,12 +22,12 @@ namespace epi {
 
     public:
         virtual void push(data_type key) = 0;
-        virtual bool search(data_type key) const = 0;
+        [[nodiscard]] virtual bool search(data_type key) const = 0;
 
         [[nodiscard]] bool empty() const {return this->m_length == 0;}
         [[nodiscard]] std::size_t length() const { return this->m_length; }
 
-        std::vector<data_type> levelOrder() const {
+        [[nodiscard]] std::vector<data_type> levelOrder() const {
             if (this->empty())
                 return {};
 
@@ -51,21 +51,21 @@ namespace epi {
             return keys;
         }
 
-        std::vector<data_type> inOrder() const {
+        [[nodiscard]] std::vector<data_type> inOrder() const {
             // Return the keys of the tree in "inorder"
             std::vector<data_type> keys;
             inOrderHelper(m_root, keys);
             return keys;
         }
 
-        std::vector<data_type> preOrder() const {
+        [[nodiscard]] std::vector<data_type> preOrder() const {
             // Return the keys of the tree in "preorder"
             std::vector<data_type> keys;
             preOrderHelper(m_root, keys);
             return keys;
         }
 
-        std::vector<data_type> postOrder() const {
+        [[nodiscard]] std::vector<data_type> postOrder() const {
             // Return the keys if the tree in "postorder"
             std::vector<data_type> keys;
             postOrderHelper(m_root, keys);

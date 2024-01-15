@@ -23,6 +23,6 @@ namespace epi {
         }
 
     };
-};
+}
 
 #endif //INTERVIEWPREP_NODE_H

@@ -39,7 +39,7 @@ int binarySearchDup(const std::vector<data_type>& array, data_type key){
 
     int firstOccurrence {-1};
     int left {0};
-    int right {array.size() - 1};
+    int right {static_cast<int>(array.size()) - 1};
 
     while (left <= right) {
         int mid {left + (right - left) / 2};
@@ -65,7 +65,7 @@ int firstLarger(const std::vector<data_type>& array, data_type key){
         return -1;
 
     int left {0};
-    int right {array.size() - 1};
+    int right {static_cast<int>(array.size()) - 1};
     int larger {-1};
 
     while (left <= right) {
