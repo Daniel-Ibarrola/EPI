@@ -32,7 +32,9 @@ namespace epi {
         }
     }
 
-    void incrementInteger(std::vector<int>& number);
+    std::vector<int> incrementInteger(std::vector<int> number);
+
+    std::vector<int> multiplyIntegers(const std::vector<int>& number, const std::vector<int>& multiplier);
 }
 
 #endif //INTERVIEWPREP_ARRAYS_H
