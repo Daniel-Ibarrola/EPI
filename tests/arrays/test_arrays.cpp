@@ -29,19 +29,30 @@ TEST(DutchFlagPartition, Test2)
 }
 
 
-TEST(IncrementInteger, Test1)
+TEST(IncrementInteger, Sums1)
 {
     std::vector<int> num {1, 2, 9};
     epi::incrementInteger(num);
 
     std::vector<int> expected {1, 3, 0};
+    ASSERT_EQ(num, expected);
 }
 
 
-TEST(IncrementInteger, Test2)
+TEST(IncrementInteger, NumberIncreasesDigitSize)
 {
     std::vector<int> num {9, 9, 9, 9};
     epi::incrementInteger(num);
 
     std::vector<int> expected {1, 0, 0, 0, 0};
+    ASSERT_EQ(num, expected);
+}
+
+
+TEST(IncrementInteger, EmptyArray)
+{
+    std::vector<int> num {};
+    epi::incrementInteger(num);
+
+    ASSERT_TRUE(num.empty());
 }
