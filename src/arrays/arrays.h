@@ -5,6 +5,7 @@
 #ifndef INTERVIEWPREP_ARRAYS_H
 #define INTERVIEWPREP_ARRAYS_H
 
+#include <iterator>
 #include <vector>
 
 namespace epi {

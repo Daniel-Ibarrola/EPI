@@ -60,11 +60,11 @@ TEST(IncrementInteger, EmptyArray)
 
 TEST(MultiplyIntegers, PositiveNumbers)
 {
-    std::vector<int> num {3, 4, 5};
-    std::vector<int> multiplier {4, 2};
+    std::vector<int> num {1, 4, 2};
+    std::vector<int> multiplier {9, 2};
     std::vector<int> result {epi::multiplyIntegers(num, multiplier)};
 
-    std::vector<int> expected {1, 4, 4, 9, 0};
+    std::vector<int> expected {1, 3, 0, 6, 4};
     ASSERT_EQ(result, expected);
 }
 
@@ -113,4 +113,17 @@ TEST(MultiplyIntegers, FactorOrderDoesntAffectProduct)
     std::vector<int> expected {1, 4, 4, 9, 0};
     ASSERT_EQ(result1, result2);
     ASSERT_EQ(result1, expected);
+}
+
+
+TEST(MultiplyIntegers, ANumberIsEmptyReturnsEmpty)
+{
+    std::vector<int> num {1, 9, 3};
+    std::vector<int> multiplier {};
+    std::vector<int> result {epi::multiplyIntegers(num, multiplier)};
+
+    ASSERT_TRUE(result.empty());
+
+    result = epi::multiplyIntegers(multiplier, num);
+    ASSERT_TRUE(result.empty());
 }
