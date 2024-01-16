@@ -27,3 +27,21 @@ TEST(DutchFlagPartition, Test2)
     std::vector<int> expected {0, 1, 0, 1, 1, 2, 2};
     ASSERT_EQ(array, expected);
 }
+
+
+TEST(IncrementInteger, Test1)
+{
+    std::vector<int> num {1, 2, 9};
+    epi::incrementInteger(num);
+
+    std::vector<int> expected {1, 3, 0};
+}
+
+
+TEST(IncrementInteger, Test2)
+{
+    std::vector<int> num {9, 9, 9, 9};
+    epi::incrementInteger(num);
+
+    std::vector<int> expected {1, 0, 0, 0, 0};
+}

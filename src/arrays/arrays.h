@@ -32,6 +32,7 @@ namespace epi {
         }
     }
 
+    void incrementInteger(std::vector<int>& number);
 }
 
 #endif //INTERVIEWPREP_ARRAYS_H

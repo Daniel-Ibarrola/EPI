@@ -7,6 +7,11 @@ Adnan Aziz, and Amit Prakash.
 
 The following algorithms have been implemented so far.
 
+### Chapter 1. Arrays
+
+- [1.1 Dutch National Flag Problem](src/arrays/arrays.h)
+- [1.2 Increment an arbitrary precision integer](src/arrays/arrays.cpp)
+
 ### Chapter 7. Linked Lists
 
 - [7.1 Merge two sorted linked lists](src/linkedlist/linkedlist.h)
