@@ -65,31 +65,24 @@ std::vector<int> epi::incrementInteger(const std::vector<int>& number) {
 
 
 std::vector<int> epi::multiplyIntegers(const std::vector<int> &number, const std::vector<int> &multiplier) {
-    //    1 4 2
-    //  x 2 3 5
-    //    -----
-    //    7 1 0
-    //  4 2 6
-    //2 8 4
-    //----------
-    //3 3 3 7 0
-
     if (number.empty() || multiplier.empty())
         return {};
 
-    std::size_t maxDigits {number.size() + multiplier.size()};
-    std::vector<std::vector<int>> multiplications(
-            multiplier.size(), std::vector<int>(maxDigits, 0));
+    bool isNegative {number.front() < 0 || multiplier.front() < 0};
 
-    // Multiply each digit of the multiplier by the number and store the results
+    std::size_t maxDigits {number.size() + multiplier.size()};
+    std::vector<int> currentSum {0};
+
     int residue {0};
     std::size_t offset {0};
-    std::size_t row {0};
     for (auto m_it {multiplier.rbegin()}; m_it != multiplier.rend(); ++m_it){
-        auto r_it {multiplications[row].rbegin()};
+
+        std::vector<int> currentProd(maxDigits);
+        auto r_it {currentProd.rbegin()};
         std::advance(r_it, offset);
+
         for (auto n_it {number.rbegin()}; n_it != number.rend(); ++n_it){
-            int product {*m_it * *n_it};
+            int product {std::abs(*m_it * *n_it)};
             product += residue;
             residue = product / 10;
             int newDigit {product % 10};
@@ -97,45 +90,25 @@ std::vector<int> epi::multiplyIntegers(const std::vector<int> &number, const std
             *r_it = newDigit;
             ++r_it;
         }
-        ++offset;
-        ++row;
-    }
 
-    if (residue > 0){
-        multiplications.back().front() = residue;
-    }
-
-    // Sum the multiplications of each digit to get the result
-    std::vector<int> result (maxDigits, 0);
-    auto r_it {result.rbegin()};
-    residue = 0;
-
-    if (!multiplications.empty()) {
-        for (int col {static_cast<int>(multiplications[0].size() - 1)}; col >= 0; --col){
-            int columnSum {residue};
-            for (auto rowInd {0}; row < multiplications.size(); ++rowInd){
-                columnSum += multiplications[rowInd][static_cast<std::size_t>(col)];
-            }
-            residue = columnSum / 10;
-            int newDigit {columnSum % 10};
-
-            *r_it = newDigit;
-            ++r_it;
+        if (residue){
+            *r_it = residue;
+            residue = 0;
         }
+
+        currentSum = addIntegers(currentProd, currentSum);
+
+        ++offset;
     }
 
-    return result;
+    if (isNegative){
+        currentSum.front() *= -1;
+    }
+
+    if (currentSum.front() == 0){
+        currentSum.erase(currentSum.begin());
+    }
+
+    return currentSum;
 }
 
-
-//    1 4 2
-//  x   9 2
-//    -----
-//    2 8 4
-//1 2 7 8
-//----------
-//1 3 0 6 4
-
-
-// X X 2 8 4
-// 1 2 6 8 X
