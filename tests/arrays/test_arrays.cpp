@@ -58,6 +58,55 @@ TEST(IncrementInteger, EmptyArray)
 }
 
 
+TEST(PadWithZerosTest, HandlesNonEmptyVector) {
+    std::vector<int> vec{1, 2, 3};
+    auto result = epi::padWithZeros(vec, 5);
+    std::vector<int> expected{0, 0, 1, 2, 3};
+    ASSERT_EQ(result, expected);
+}
+
+TEST(PadWithZerosTest, HandlesAlreadySufficientSize) {
+    std::vector<int> vec{1, 2, 3, 4, 5};
+    auto result = epi::padWithZeros(vec, 5);
+    ASSERT_EQ(result, vec);
+}
+
+TEST(PadWithZerosTest, HandlesEmptyVector) {
+    std::vector<int> vec{};
+    auto result = epi::padWithZeros(vec, 3);
+    std::vector<int> expected{0, 0, 0};
+    ASSERT_EQ(result, expected);
+}
+
+TEST(PadWithZerosTest, HandlesFinalSizeLessThanVecSize) {
+    std::vector<int> vec{1, 2, 3};
+    auto result = epi::padWithZeros(vec, 2); // Should return the original vector as is
+    ASSERT_EQ(result, vec);
+}
+
+
+TEST(AddIntegers, SmallNumbers)
+{
+    std::vector<int> num1 {1, 2, 3};
+    std::vector<int> num2 {4, 5, 6};
+    std::vector<int> result {epi::addIntegers(num1, num2)};
+
+    std::vector<int> expected {5, 7, 9};
+    ASSERT_EQ(expected, result);
+}
+
+
+TEST(AddIntegers, LargerNumbers)
+{
+    std::vector<int> num1 {9, 9, 9};
+    std::vector<int> num2 {9, 9, 9};
+    std::vector<int> result {epi::addIntegers(num1, num2)};
+
+    std::vector<int> expected {1,9,9,8};
+    ASSERT_EQ(expected, result);
+}
+
+
 TEST(MultiplyIntegers, PositiveNumbers)
 {
     std::vector<int> num {1, 4, 2};

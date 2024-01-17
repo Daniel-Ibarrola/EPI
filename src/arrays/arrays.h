@@ -33,7 +33,11 @@ namespace epi {
         }
     }
 
-    std::vector<int> incrementInteger(std::vector<int> number);
+    std::vector<int> padWithZeros(const std::vector<int>& vec, std::size_t finalSize);
+
+    std::vector<int> addIntegers(const std::vector<int>& num1, const std::vector<int>& num2);
+
+    std::vector<int> incrementInteger(const std::vector<int>& number);
 
     std::vector<int> multiplyIntegers(const std::vector<int>& number, const std::vector<int>& multiplier);
 }
