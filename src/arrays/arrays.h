@@ -33,6 +33,36 @@ namespace epi {
         }
     }
 
+    template <typename data_type>
+    std::vector<data_type> removeDuplicates(const std::vector<data_type>& array){
+        std::vector<data_type> result;
+
+        if (!array.empty()){
+            result.push_back(array[0]);
+        }
+
+        for (auto ii {1}; ii < array.size(); ++ii){
+            if (array[ii - 1] != array[ii])
+                result.push_back(array[ii]);
+        }
+        return result;
+    }
+
+    template <typename data_type>
+    int numDuplicates(std::vector<data_type>& array){
+       if (array.empty())
+           return 0;
+
+       std::size_t writeIndex {1};
+       for (auto ii {1}; ii < array.size(); ++ii){
+           if (array[writeIndex - 1] != array[ii]){
+               array[writeIndex] = array[ii];
+               ++writeIndex;
+           }
+       }
+       return static_cast<int>(array.size() - writeIndex);
+    }
+
     std::vector<int> padWithZeros(const std::vector<int>& vec, std::size_t finalSize);
 
     std::vector<int> addIntegers(const std::vector<int>& num1, const std::vector<int>& num2);

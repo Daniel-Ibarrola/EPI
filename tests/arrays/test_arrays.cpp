@@ -176,3 +176,53 @@ TEST(MultiplyIntegers, ANumberIsEmptyReturnsEmpty)
     result = epi::multiplyIntegers(multiplier, num);
     ASSERT_TRUE(result.empty());
 }
+
+
+TEST(RemoveDuplicatesFromSortedArray, DuplicatesAreRemoved)
+{
+    std::vector<int> array {2, 3, 5, 5, 7, 11, 11, 11, 13};
+    std::vector<int> noDuplicates {epi::removeDuplicates(array)};
+    std::vector<int> expected {2, 3, 5, 7, 11, 13};
+    ASSERT_EQ(noDuplicates, expected);
+}
+
+
+TEST(RemoveDuplicatesFromSortedArray, DoesntModifyArratIfNoDuplicates)
+{
+    std::vector<int> array {2, 3, 4, 5};
+    std::vector<int> noDuplicates {epi::removeDuplicates(array)};
+    std::vector<int> expected {2, 3, 4, 5};
+    ASSERT_EQ(noDuplicates, expected);
+}
+
+
+TEST(RemoveDuplicatesFromSortedArray, EmptyArray)
+{
+    std::vector<int> array {};
+    std::vector<int> noDuplicates {epi::removeDuplicates(array)};
+    ASSERT_TRUE(noDuplicates.empty());
+}
+
+
+TEST(NumberOfDuplicates, DuplicatesAreRemoved)
+{
+    std::vector<int> array {2, 3, 5, 5, 7, 11, 11, 11, 13};
+    int numDuplicates {epi::numDuplicates(array)};
+    ASSERT_EQ(numDuplicates, 3);
+}
+
+
+TEST(NumberOfDuplicates, DoesntModifyArratIfNoDuplicates)
+{
+    std::vector<int> array {2, 3, 4, 5};
+    int numDuplicates {epi::numDuplicates(array)};
+    ASSERT_EQ(numDuplicates, 0);
+}
+
+
+TEST(NumberOfDuplicates, EmptyArray)
+{
+    std::vector<int> array {};
+    int numDuplicates {epi::numDuplicates(array)};
+    ASSERT_EQ(numDuplicates, 0);
+}
