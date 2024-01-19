@@ -70,6 +70,8 @@ namespace epi {
     std::vector<int> incrementInteger(const std::vector<int>& number);
 
     std::vector<int> multiplyIntegers(const std::vector<int>& number, const std::vector<int>& multiplier);
+
+    int maxProfit(const std::vector<int>& array);
 }
 
 #endif //INTERVIEWPREP_ARRAYS_H

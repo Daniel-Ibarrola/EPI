@@ -226,3 +226,19 @@ TEST(NumberOfDuplicates, EmptyArray)
     int numDuplicates {epi::numDuplicates(array)};
     ASSERT_EQ(numDuplicates, 0);
 }
+
+
+TEST(BuyAndSellStock, ComputesMaxProfit)
+{
+    std::vector<int> prices {310, 315, 275, 295, 260, 270, 290, 230, 255, 250};
+    int maxProfit {epi::maxProfit(prices)};
+    ASSERT_EQ(maxProfit, 30);
+}
+
+
+TEST(BuyAndSellStock, NoProfitPossible)
+{
+    std::vector<int> prices {200, 150, 130};
+    int maxProfit {epi::maxProfit(prices)};
+    ASSERT_EQ(maxProfit, 0);
+}

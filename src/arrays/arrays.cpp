@@ -112,3 +112,19 @@ std::vector<int> epi::multiplyIntegers(const std::vector<int> &number, const std
     return currentSum;
 }
 
+
+int epi::maxProfit(const std::vector<int> &array) {
+    //    {310, 315, 275, 295, 260, 270, 290, 230, 255, 250};
+    //
+    //  Buy 260, Sell 290
+    int currentMax {0};
+    for (auto ii {0}; ii < array.size(); ++ii){
+        for (auto jj {ii + 1}; jj < array.size(); ++jj){
+            int diff {array[jj] - array[ii]};
+            if (diff > currentMax){
+                currentMax = diff;
+            }
+        }
+    }
+    return currentMax;
+}
